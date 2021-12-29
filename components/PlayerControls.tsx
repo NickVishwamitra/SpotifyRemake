@@ -129,7 +129,9 @@ const PlayerControls = () => {
             style={{ cursor: "pointer" }}
             size={30}
             onClick={() => {
-              dispatch(setCurrentTrackIndex(currentTrackIndex + 1));
+              if (currentTrackIndex == currentPlaylistInfo.tracks.length - 1) {
+                dispatch(setCurrentTrackIndex(0));
+              } else dispatch(setCurrentTrackIndex(currentTrackIndex + 1));
             }}
           ></SkipForward>
           <Repeat size={30}></Repeat>
@@ -163,11 +165,32 @@ const PlayerControls = () => {
         <Queue size={30} />
         <DesktopTower size={30} />
         {volumeValue >= 50 ? (
-          <SpeakerHigh size={30} />
+          <SpeakerHigh
+            style={{ cursor: "pointer" }}
+            size={30}
+            onClick={() => {
+              dispatch(setPlayerVolume(0));
+              setVolumeValue(0);
+            }}
+          />
         ) : volumeValue < 50 && volumeValue > 0 ? (
-          <SpeakerLow size={30} />
+          <SpeakerLow
+            size={30}
+            style={{ cursor: "pointer" }}
+            onClick={() => {
+              dispatch(setPlayerVolume(0));
+              setVolumeValue(0);
+            }}
+          />
         ) : (
-          <SpeakerX size={30} />
+          <SpeakerX
+            size={30}
+            style={{ cursor: "pointer" }}
+            onClick={() => {
+              dispatch(setPlayerVolume(100));
+              setVolumeValue(100);
+            }}
+          />
         )}
         <Slider
           aria-label="Volume"

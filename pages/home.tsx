@@ -36,6 +36,11 @@ import {
   mgkPlaylist,
   modSunPlaylist,
   bollywoodPlaylist,
+  blackbearPlaylist,
+  RnBPlaylist,
+  lofiPlaylist,
+  allNighterPlaylist,
+  repeatPlaylist,
 } from "../playlists/playlists";
 
 const HomePage: NextPage = () => {
@@ -122,7 +127,7 @@ const HomePage: NextPage = () => {
                 rightSection={<CaretDown></CaretDown>}
                 size="xl"
               >
-                Nick V
+                Nick Vishwamitra
               </Badge>
             }
           >
@@ -160,18 +165,21 @@ const HomePage: NextPage = () => {
               playlistNum="p2"
               title="Repeat"
               image={repeatPic}
+              playlist={repeatPlaylist}
               url="https://www.youtube.com/watch?v=LphfjxuIbIM"
             ></PlaylistButton>
             <PlaylistButton
               playlistNum="p3"
               image={rnbPic}
               title="RnB"
+              playlist={RnBPlaylist}
               url="https://www.youtube.com/watch?v=H5-qGFO138E"
             ></PlaylistButton>
             <PlaylistButton
               playlistNum="p4"
               image={allNightPic}
               title="All-Nighter"
+              playlist={allNighterPlaylist}
               url="https://www.youtube.com/watch?v=nxEgxfHUvE8"
             ></PlaylistButton>
           </div>
@@ -180,6 +188,7 @@ const HomePage: NextPage = () => {
               playlistNum="p5"
               title="Lofi hip hop music"
               image={lofiPic}
+              playlist={lofiPlaylist}
               url="https://www.youtube.com/watch?v=8UdFjRUH9oY"
             ></PlaylistButton>
             <PlaylistButton
@@ -200,6 +209,7 @@ const HomePage: NextPage = () => {
               playlistNum="p8"
               image={blackbearPic}
               title="Blackbear"
+              playlist={blackbearPlaylist}
               url="https://www.youtube.com/watch?v=pfv4GV7Ll-Y"
             ></PlaylistButton>
           </div>

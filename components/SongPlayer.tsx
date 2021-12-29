@@ -8,6 +8,7 @@ import {
   setPlayingUrl,
   setCurrentTrackIndex,
   toggleGlobalPlaying,
+  setCurrentPlaylistInfo,
 } from "../redux/playingSlice";
 import { RootState } from "../redux/store";
 
@@ -46,7 +47,10 @@ const SongPlayer = () => {
         dispatch(setPlayedSeconds(played.playedSeconds));
       }}
       onEnded={() => {
-        dispatch(setCurrentTrackIndex(currentTrackIndex + 1));
+        if (currentTrackIndex == currentPlaylistInfo.tracks.length - 1) {
+          dispatch(setCurrentTrackIndex(0));
+        } else dispatch(setCurrentTrackIndex(currentTrackIndex + 1));
+
         dispatch(toggleGlobalPlaying());
         dispatch(toggleGlobalPlaying());
       }}

@@ -106,36 +106,36 @@ const Navigation = (props: any) => {
           </p>
         </div>
       </Link>
-      <Link href="/library">
-        <div
+      {/* <Link href="/library"> */}
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          fontWeight: 900,
+          margin: "0% 5% ",
+          cursor: "pointer",
+          height: "5%",
+          borderRadius: "5px",
+          backgroundColor: props.selected == "library" ? "#292829" : "",
+          marginBottom: "10%",
+        }}
+      >
+        <Books
+          size={30}
+          style={{ marginRight: "5%", marginLeft: "5%" }}
+          weight={props.selected == "library" ? "bold" : "thin"}
+        />
+        <p
           style={{
-            display: "flex",
-            alignItems: "center",
-            fontWeight: 900,
-            margin: "0% 5% ",
-            cursor: "pointer",
-            height: "5%",
-            borderRadius: "5px",
-            backgroundColor: props.selected == "library" ? "#292829" : "",
-            marginBottom: "10%",
+            textAlign: "center",
+            fontSize: 15,
+            fontWeight: props.selected == "library" ? 700 : 400,
           }}
         >
-          <Books
-            size={30}
-            style={{ marginRight: "5%", marginLeft: "5%" }}
-            weight={props.selected == "library" ? "bold" : "thin"}
-          />
-          <p
-            style={{
-              textAlign: "center",
-              fontSize: 15,
-              fontWeight: props.selected == "library" ? 700 : 400,
-            }}
-          >
-            Your Library
-          </p>
-        </div>
-      </Link>
+          Your Library
+        </p>
+      </div>
+      {/* </Link> */}
       <Link href="/createplaylist">
         <div
           style={{
@@ -170,41 +170,41 @@ const Navigation = (props: any) => {
           </p>
         </div>
       </Link>
-      <Link href="/createplaylist">
-        <div
+      {/* <Link href="/createplaylist"> */}
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          fontWeight: 900,
+          margin: "0% 5% ",
+          cursor: "pointer",
+          height: "5%",
+          borderRadius: "5px",
+        }}
+      >
+        <HeartStraight
+          weight="fill"
+          size={30}
           style={{
-            display: "flex",
-            alignItems: "center",
-            fontWeight: 900,
-            margin: "0% 5% ",
-            cursor: "pointer",
-            height: "5%",
+            marginRight: "5%",
+            marginLeft: "5%",
+            padding: "2%",
             borderRadius: "5px",
+            background:
+              "linear-gradient(146deg, #05afe1 0%, rgba(43,182,115,1) 100%)",
+          }}
+        />
+        <p
+          style={{
+            textAlign: "center",
+            fontSize: 15,
+            fontWeight: 400,
           }}
         >
-          <HeartStraight
-            weight="fill"
-            size={30}
-            style={{
-              marginRight: "5%",
-              marginLeft: "5%",
-              padding: "2%",
-              borderRadius: "5px",
-              background:
-                "linear-gradient(146deg, #05afe1 0%, rgba(43,182,115,1) 100%)",
-            }}
-          />
-          <p
-            style={{
-              textAlign: "center",
-              fontSize: 15,
-              fontWeight: 400,
-            }}
-          >
-            Liked Songs
-          </p>
-        </div>
-      </Link>
+          Liked Songs
+        </p>
+      </div>
+      {/* </Link> */}
       <div style={{ margin: "5%" }}>
         <Divider size="xs"></Divider>
       </div>

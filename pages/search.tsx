@@ -76,7 +76,7 @@ const SearchPage: NextPage = () => {
               rightSection={<CaretDown></CaretDown>}
               size="xl"
             >
-              Nick V
+              Nick Vishwamitra
             </Badge>
           </div>
         </div>
