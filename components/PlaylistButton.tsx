@@ -106,4 +106,7 @@ const PlaylistButton = (props: any) => {
     ></MotionCard>
   );
 };
+
+PlaylistButton.diplayName = "PlaylistButton";
+
 export default PlaylistButton;
