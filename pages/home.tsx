@@ -30,6 +30,13 @@ import lofiPic from "../assets/lofiPic.png";
 import mgkPic from "../assets/mgk.png";
 import modPic from "../assets/modSun.png";
 import blackbearPic from "../assets/blackbear.png";
+import HomeItem from "../components/HomeItem";
+import PlayerControls from "../components/PlayerControls";
+import {
+  mgkPlaylist,
+  modSunPlaylist,
+  bollywoodPlaylist,
+} from "../playlists/playlists";
 
 const HomePage: NextPage = () => {
   const [scroll, scrollTo] = useWindowScroll();
@@ -48,10 +55,11 @@ const HomePage: NextPage = () => {
       }}
     >
       <Navigation selected="home" />
+      <PlayerControls />
       <div
         style={{
           background:
-            "linear-gradient(180deg, rgba(93,70,75,1) 0%, rgba(18,18,18,1) 10%)",
+            "linear-gradient(180deg, rgba(93,70,75,1) 0%, rgba(18,18,18,1) 20%)",
           minHeight: "100%",
           maxHeight: "100%",
           display: "flex",
@@ -136,7 +144,7 @@ const HomePage: NextPage = () => {
             marginLeft: "2.5%",
           }}
         >
-          <div style={{ height: "50%", display: "flex", gap: "1%" }}>
+          <div style={{ minHeight: "35%", display: "flex", gap: "1%" }}>
             {/* <MotionCard whileHover={{ scale: 0.8 }}></MotionCard>
             <MotionCard whileHover={{ scale: 0.8 }}></MotionCard>
             <MotionCard whileHover={{ scale: 0.8 }}></MotionCard>
@@ -145,6 +153,7 @@ const HomePage: NextPage = () => {
               playlistNum="p1"
               title="Bollywood"
               image={bollywoodPic}
+              playlist={bollywoodPlaylist}
               url="https://www.youtube.com/watch?v=gejR1jDhwec"
             ></PlaylistButton>
             <PlaylistButton
@@ -166,7 +175,7 @@ const HomePage: NextPage = () => {
               url="https://www.youtube.com/watch?v=nxEgxfHUvE8"
             ></PlaylistButton>
           </div>
-          <div style={{ height: "50%", display: "flex", gap: "1%" }}>
+          <div style={{ minHeight: "35%", display: "flex", gap: "1%" }}>
             <PlaylistButton
               playlistNum="p5"
               title="Lofi hip hop music"
@@ -177,12 +186,14 @@ const HomePage: NextPage = () => {
               playlistNum="p6"
               title="Machine Gun Kelly"
               image={mgkPic}
+              playlist={mgkPlaylist}
               url="https://www.youtube.com/watch?v=28PwRWXQ6Pw"
             ></PlaylistButton>
             <PlaylistButton
               playlistNum="p7"
               image={modPic}
               title="Mod Sun"
+              playlist={modSunPlaylist}
               url="https://www.youtube.com/watch?v=BIu7D0HmpNc"
             ></PlaylistButton>
             <PlaylistButton
@@ -191,6 +202,39 @@ const HomePage: NextPage = () => {
               title="Blackbear"
               url="https://www.youtube.com/watch?v=pfv4GV7Ll-Y"
             ></PlaylistButton>
+          </div>
+          <Title order={2}>Episodes for you</Title>
+          <div
+            style={{
+              display: "flex",
+              margin: "1% 0%",
+              // height: "70%",
+              gap: "3%",
+            }}
+          >
+            <HomeItem link="https://i.scdn.co/image/ab6765630000ba8a2fa74692371fefceab244e16" />
+            <HomeItem link="https://i.scdn.co/image/ab6765630000ba8a513a9f74a6e1a5e869832899" />
+            <HomeItem link="https://i.scdn.co/image/ab67656300005f1fc42498b3560fb76c4a3c9841" />
+            <HomeItem link="https://i.scdn.co/image/2a7671b14ce554899d0740f1ee42af80f638d1b2" />
+            <HomeItem link="https://i.scdn.co/image/2a7671b14ce554899d0740f1ee42af80f638d1b2" />
+            <HomeItem link="https://i.scdn.co/image/2a7671b14ce554899d0740f1ee42af80f638d1b2" />
+          </div>
+          <Title order={2}>Your top mixes</Title>
+          <div
+            style={{
+              display: "flex",
+              margin: "1% 0%",
+              gap: "3%",
+              // position: "relative",
+              // top: "-10%",
+            }}
+          >
+            <HomeItem link="https://i.scdn.co/image/ab6765630000ba8a2fa74692371fefceab244e16" />
+            <HomeItem link="https://i.scdn.co/image/ab6765630000ba8a513a9f74a6e1a5e869832899" />
+            <HomeItem link="https://i.scdn.co/image/ab67656300005f1fc42498b3560fb76c4a3c9841" />
+            <HomeItem link="https://i.scdn.co/image/2a7671b14ce554899d0740f1ee42af80f638d1b2" />
+            <HomeItem link="https://i.scdn.co/image/2a7671b14ce554899d0740f1ee42af80f638d1b2" />
+            <HomeItem link="https://i.scdn.co/image/2a7671b14ce554899d0740f1ee42af80f638d1b2" />
           </div>
         </div>
       </div>

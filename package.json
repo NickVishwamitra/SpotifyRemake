@@ -8,6 +8,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/react": "^11.7.1",
+    "@emotion/styled": "^11.6.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
     "@fortawesome/free-brands-svg-icons": "^5.15.4",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
@@ -15,6 +17,8 @@
     "@mantine/core": "^3.4.0",
     "@mantine/hooks": "^3.4.0",
     "@mantine/next": "^3.4.0",
+    "@mui/material": "^5.2.6",
+    "@nextui-org/react": "^1.0.2-alpha.1",
     "@reduxjs/toolkit": "^1.7.1",
     "framer-motion": "^5.5.5",
     "next": "12.0.7",

@@ -5,6 +5,7 @@ import { ArrowLeft, CaretDown, CaretLeft, CaretRight } from "phosphor-react";
 import { Fragment, useContext } from "react";
 import ReactPlayer from "react-player";
 import Navigation from "../components/Navigation";
+import PlayerControls from "../components/PlayerControls";
 
 const SearchPage: NextPage = () => {
   return (
@@ -18,6 +19,7 @@ const SearchPage: NextPage = () => {
     >
       <div style={{ height: "auto", width: "100%", display: "flex" }}>
         <Navigation selected="search" />
+        <PlayerControls />
         <div
           style={{
             width: "85%",

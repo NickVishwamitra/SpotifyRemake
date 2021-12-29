@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { PlayerPlayingContext } from "../pages/_app";
 import { RootState } from "../redux/store";
 import {
+  setCurrentPlaylistInfo,
+  setCurrentTrackIndex,
   setPlayingUrl,
   setPlaylistPlaying,
   toggleGlobalPlaying,
@@ -18,6 +20,12 @@ const PlaylistButton = (props: any) => {
   );
   const globalPlaying = useSelector(
     (state: RootState) => state.playingControls.globalPlaying
+  );
+  const currentPlaylistInfo = useSelector(
+    (state: RootState) => state.playingControls.currentPlaylistInfo
+  );
+  const currentTrackIndex = useSelector(
+    (state: RootState) => state.playingControls.currentTrackIndex
   );
   const dispatch = useDispatch();
 
@@ -59,20 +67,21 @@ const PlaylistButton = (props: any) => {
   const MotionCard = motion(CardComponent);
 
   const ButtonComponent = forwardRef((_props, ref: any) => {
-    const { isPlayerPlaying, setIsPlayerPlaying } =
-      useContext(PlayerPlayingContext);
-
-    const [specificPlaying, setSpecificPlaying] = useState(false);
     return (
       <Button
         ref={ref}
         onClick={() => {
+          if (playlistPlaying != props.playlistNum) {
+            dispatch(setCurrentTrackIndex(0));
+          }
+          dispatch(toggleGlobalPlaying());
+
           dispatch(setPlaylistPlaying(props.playlistNum));
 
-          dispatch(toggleGlobalPlaying());
-          setIsPlayerPlaying(!isPlayerPlaying);
-          setSpecificPlaying(!specificPlaying);
-          dispatch(setPlayingUrl(props.url));
+          dispatch(setCurrentPlaylistInfo(props.playlist));
+          dispatch(
+            setPlayingUrl(props.playlist.tracks[currentTrackIndex]?.url)
+          );
         }}
         style={{
           backgroundColor: "#1CCD5A",
@@ -80,7 +89,7 @@ const PlaylistButton = (props: any) => {
           left: "75%",
         }}
       >
-        {props.playlistNum == playlistPlaying && isPlayerPlaying ? (
+        {props.playlistNum == playlistPlaying && globalPlaying ? (
           <Pause weight="fill"></Pause>
         ) : (
           <Play weight="fill"></Play>
