@@ -273,7 +273,7 @@ const QueueItems = () => {
       }}
     >
       {currentPlaylistInfo.tracks.map((track: any, index: number) => (
-        <Fragment>
+        <Fragment key={index}>
           <Divider></Divider>
           <div
             style={{
