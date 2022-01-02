@@ -12,7 +12,7 @@ const HomeItem = (props: any) => {
         display: "flex",
         backgroundColor: bgColor,
         alignItems: "center",
-        maxHeight: "75%",
+        maxHeight: "400px",
         gap: "2%",
         cursor: "pointer",
         justifyContent: "center",

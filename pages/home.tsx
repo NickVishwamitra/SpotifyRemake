@@ -43,6 +43,9 @@ import {
   repeatPlaylist,
 } from "../playlists/playlists";
 
+import SimpleBar from "simplebar-react";
+import "simplebar/dist/simplebar.min.css";
+
 const HomePage: NextPage = () => {
   const [scroll, scrollTo] = useWindowScroll();
   const [navBG, setNavBG] = useState("rgba(0,0,0,0)");
@@ -56,20 +59,26 @@ const HomePage: NextPage = () => {
       style={{
         display: "flex",
         width: "100%",
-        maxHeight: "100%",
+        // maxHeight: "100%",
+        // overflow: "scroll",
       }}
     >
       <Navigation selected="home" />
       <PlayerControls />
+
       <div
         style={{
           background:
-            "linear-gradient(180deg, rgba(93,70,75,1) 0%, rgba(18,18,18,1) 20%)",
-          minHeight: "100%",
-          maxHeight: "100%",
+            "linear-gradient(180deg, rgba(93,70,75,1) 0%, rgba(18,18,18,1) 40%)",
+          minHeight: "82%",
+          maxHeight: "82%",
           display: "flex",
           flexDirection: "column",
           width: "100%",
+
+          overflowY: "auto",
+          overflowX: "hidden",
+          // paddingBottom: "5%",
         }}
       >
         <div
@@ -81,7 +90,7 @@ const HomePage: NextPage = () => {
             padding: "0% 2%",
             position: "fixed",
             zIndex: "10000",
-            backgroundColor: scroll.y > 50 ? "#5d464b" : "rgba(0,0,0,0)",
+            // backgroundColor: "#5d464b",
           }}
         >
           <div style={{ display: "flex", gap: "15%" }}>
@@ -127,7 +136,7 @@ const HomePage: NextPage = () => {
                 rightSection={<CaretDown></CaretDown>}
                 size="xl"
               >
-                Nick Vishwamitra
+                Nick V
               </Badge>
             }
           >
@@ -143,17 +152,16 @@ const HomePage: NextPage = () => {
         </Title>
         <div
           style={{
-            height: "30%",
+            // height: "90%",
             display: "flex",
             flexDirection: "column",
             marginLeft: "2.5%",
+            gap: "5%",
+            // overflow: "scroll",
+            maxHeight: "95vh",
           }}
         >
-          <div style={{ minHeight: "35%", display: "flex", gap: "1%" }}>
-            {/* <MotionCard whileHover={{ scale: 0.8 }}></MotionCard>
-            <MotionCard whileHover={{ scale: 0.8 }}></MotionCard>
-            <MotionCard whileHover={{ scale: 0.8 }}></MotionCard>
-            <MotionCard whileHover={{ scale: 0.8 }}></MotionCard> */}
+          <div style={{ display: "flex", gap: "1%" }}>
             <PlaylistButton
               playlistNum="p1"
               title="Bollywood"
@@ -183,7 +191,7 @@ const HomePage: NextPage = () => {
               url="https://www.youtube.com/watch?v=nxEgxfHUvE8"
             ></PlaylistButton>
           </div>
-          <div style={{ minHeight: "35%", display: "flex", gap: "1%" }}>
+          <div style={{ display: "flex", gap: "1%" }}>
             <PlaylistButton
               playlistNum="p5"
               title="Lofi hip hop music"
@@ -220,6 +228,8 @@ const HomePage: NextPage = () => {
               margin: "1% 0%",
               // height: "70%",
               gap: "3%",
+              maxHeight: "250px",
+              // alignItems: "center",
             }}
           >
             <HomeItem link="https://i.scdn.co/image/ab6765630000ba8a2fa74692371fefceab244e16" />
@@ -237,6 +247,7 @@ const HomePage: NextPage = () => {
               gap: "3%",
               // position: "relative",
               // top: "-10%",
+              maxHeight: "250px",
             }}
           >
             <HomeItem link="https://i.scdn.co/image/ab6765630000ba8a2fa74692371fefceab244e16" />

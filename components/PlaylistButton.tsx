@@ -39,9 +39,10 @@ const PlaylistButton = (props: any) => {
           display: "flex",
           backgroundColor: bgColor,
           alignItems: "center",
-          maxHeight: "75%",
+          maxHeight: "100px",
           gap: "5%",
           cursor: "pointer",
+          marginBottom: "1%",
         }}
         onMouseEnter={() => {
           setButtonVisible(true);

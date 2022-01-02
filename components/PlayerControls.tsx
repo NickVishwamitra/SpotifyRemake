@@ -1,12 +1,20 @@
-import { Text } from "@mantine/core";
+import {
+  Text,
+  Image,
+  Button,
+  Slider as ManSlider,
+  Divider,
+} from "@mantine/core";
 import { Stack, Slider } from "@mui/material";
-import { Progress } from "@nextui-org/react";
+import { Progress, Tooltip } from "@nextui-org/react";
 import {
   ArrowsOutSimple,
   DesktopTower,
   Heart,
   Microphone,
+  Pause,
   PauseCircle,
+  Play,
   PlayCircle,
   Queue,
   Repeat,
@@ -17,9 +25,10 @@ import {
   SpeakerLow,
   SpeakerX,
 } from "phosphor-react";
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, Fragment, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  setCurrentPlaylistInfo,
   setCurrentTrackIndex,
   setPlayerVolume,
   setPlayingUrl,
@@ -44,6 +53,7 @@ const PlayerControls = () => {
   );
 
   const [volumeValue, setVolumeValue] = useState<number>(100);
+  const [popoverOpened, setPopoverOpened] = useState(true);
 
   const handleChange = (event: Event, newValue: any) => {
     setVolumeValue(newValue as number);
@@ -145,11 +155,18 @@ const PlayerControls = () => {
           }}
         >
           <Text size="xs">{secondsToTime(playedSeconds)}</Text>
-          <Progress
+          {/* <Progress
             value={(playedSeconds / songDuration) * 100}
             color="success"
             size="xs"
-          ></Progress>
+          ></Progress> */}
+          <ManSlider
+            value={(playedSeconds / songDuration) * 100}
+            style={{ width: "100%" }}
+            color="green"
+            label={secondsToTime(playedSeconds)}
+            size="xs"
+          ></ManSlider>
           <Text size="xs">{secondsToTime(songDuration)}</Text>
         </div>
       </div>
@@ -162,7 +179,19 @@ const PlayerControls = () => {
         }}
       >
         <Microphone size={30} />
-        <Queue size={30} />
+        <Tooltip
+          trigger="click"
+          content={<QueueItems />}
+          // style={{ backgroundColor: "#1C1C1F" }}
+          color="success"
+        >
+          <Queue
+            size={15}
+            onClick={() => setPopoverOpened(!popoverOpened)}
+            style={{ cursor: "pointer" }}
+          />
+        </Tooltip>
+
         <DesktopTower size={30} />
         {volumeValue >= 50 ? (
           <SpeakerHigh
@@ -219,3 +248,74 @@ function secondsToTime(e: any) {
   return m + ":" + s;
   //return `${h}:${m}:${s}`;
 }
+
+const QueueItems = () => {
+  const currentPlaylistInfo = useSelector(
+    (state: RootState) => state.playingControls.currentPlaylistInfo
+  );
+  const currentTrackIndex = useSelector(
+    (state: RootState) => state.playingControls.currentTrackIndex
+  );
+
+  const globalPlaying = useSelector(
+    (state: RootState) => state.playingControls.globalPlaying
+  );
+  const dispatch = useDispatch();
+  // const [buttonVisible, setButtonVisible] = useState(true);
+  return (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        maxHeight: "900px",
+        overflowY: "auto",
+        overflowX: "hidden",
+      }}
+    >
+      {currentPlaylistInfo.tracks.map((track: any, index: number) => (
+        <Fragment>
+          <Divider></Divider>
+          <div
+            style={{
+              display: "flex",
+              margin: "5%",
+              width: "250px",
+              gap: "5%",
+              paddingRight: "10%",
+              cursor: "pointer",
+            }}
+            onClick={() => dispatch(setCurrentTrackIndex(index))}
+          >
+            <Image src={track.pic} height={50} width={50} />
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+              }}
+            >
+              <Text style={{ color: "white" }} weight={700}>
+                {track.title}
+              </Text>
+              <Text style={{ color: "white" }}>{track.author}</Text>
+            </div>
+            <Button
+              onClick={() => dispatch(toggleGlobalPlaying())}
+              style={{
+                marginLeft: "auto",
+                visibility: currentTrackIndex == index ? "visible" : "hidden",
+                alignSelf: "center",
+              }}
+            >
+              {globalPlaying ? (
+                <Pause weight="fill"></Pause>
+              ) : (
+                <Play weight="fill" />
+              )}
+            </Button>
+          </div>
+        </Fragment>
+      ))}
+    </div>
+  );
+};

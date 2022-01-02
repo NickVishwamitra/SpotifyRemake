@@ -12,7 +12,7 @@ import ReactPlayer from "react-player";
 import { Provider, useSelector } from "react-redux";
 import { RootState, store } from "../redux/store";
 import SongPlayer from "../components/SongPlayer";
-
+import { ChakraProvider } from "@chakra-ui/react";
 export const PlayerPlayingContext = createContext({
   isPlayerPlaying: false,
   setIsPlayerPlaying: (_boolean: boolean) => {},
